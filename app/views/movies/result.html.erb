@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row ng-scope">
+    <div class="col-md-9 col-md-pull-3">
+      <p class="search-results-count">About <%= @movies.count %> results</p>
+      <% @movies.each do |movie| %>
+        <section class="search-result-item">
+          <a class="image-link" href="#"><img src="<%= "https://image.tmdb.org/t/p/w500" + movie['poster_path'] %>" class="card-img-top" alt="<%= movie['title'] %>">
+          </a>
+          <div class="search-result-item-body">
+            <div class="row">
+              <div class="col-sm-9">
+                <h4 class="search-result-item-heading"><%= movie['title'] %></h4>
+                <p class="info">Data de lançamento <%= movie['release_date'] %></p>
+                <p class="description"><%= movie['overview'] %></p>
+                <p class="card-text">Votos: <%= movie['vote_average'] %></p>
+              </div>
+            </div>
+          </div>
+        </section>
+      <% end %>
+    </div>
+  </div>
+  <%= paginate @movies %>
+</div>
