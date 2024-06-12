@@ -1,6 +1,10 @@
 <% @movies['results'].each do |movie| %>
   <div class="card" style="width: 18rem;">
-    <img src="<%= "https://image.tmdb.org/t/p/w500" + movie['poster_path'] %>" class="card-img-top" alt="<%= movie['title'] %>">
+    <% if movie['poster_path'] %>
+      <img src="<%= "https://image.tmdb.org/t/p/w500" + movie['poster_path'] %>" class="card-img-top" alt="<%= movie['title'] %>">
+    <% else %>
+      <img src="https://via.placeholder.com/500" class="card-img-top" alt="<%= movie['title'] %>">
+    <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= movie['title'] %></h5>
       <p class="card-text"><%= movie['overview'] %></p>
