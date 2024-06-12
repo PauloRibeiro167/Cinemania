@@ -11,4 +11,10 @@ class Movie
     respond = HTTParty.get(url)
     response = JSON.parse(respond.body)
   end
+
+  def self.search_movie(query)
+    url = "https://api.themoviedb.org/3/search/movie?api_key=#{API_KEY}&language=pt-BR&query=#{query}&include_adult=false&page=1"
+    response = HTTParty.get(url)
+    JSON.parse(response.body)
+  end
 end
